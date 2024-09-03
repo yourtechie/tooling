@@ -80,13 +80,13 @@ if (isset($_GET['logout'])) {
 
 <div class="container">
 <div class="box">
-	<a href="https://jenkins.infra.zooto.io/" target="_blank">
+	<a href="https://jenkins.infra.steghub.com/" target="_blank">
 		<img src="img/jenkins.png" alt="Snow" width="400" height="150">
 	</a>
 </div>
 
 <div class="box">
-	<a href="https://grafana.infra.zooto.io/" target="_blank">
+	<a href="https://grafana.infra.steghub.com/" target="_blank">
 		<img src="img/grafana.png" alt="Snow2" width="400" height="150">
 	</a>
 
@@ -94,7 +94,7 @@ if (isset($_GET['logout'])) {
 </div>
 
 <div class="box">
-	<a href="https://rancher.infra.zooto.io/" target="_blank">
+	<a href="https://rancher.infra.steghub.com/" target="_blank">
 		<img src="img/rancher.png" alt="Snow" width="400" height="150">
 	</a>
 </div>
@@ -103,20 +103,20 @@ if (isset($_GET['logout'])) {
 </div>
 <div class="container">
 <div class="box">
-	<a href="https://prometheus.infra.zooto.io/" target="_blank">
+	<a href="https://prometheus.infra.steghub.com/" target="_blank">
 		<img src="img/prometheus.png" alt="Snow" width="400" height="150">
 	</a>
 </div>
 
 <div class="box">
-	<a href="https://k8s-metrics.infra.zooto.io/" target="_blank">
+	<a href="https://k8s-metrics.infra.steghub.com/" target="_blank">
 		<img src="img/kubernetes.png" alt="Snow" width="400" height="120">
 	</a>
 
 </div>
 
 <div class="box">
-	<a href="https://kibana.infra.zooto.io/" target="_blank">
+	<a href="https://kibana.infra.steghub.com/" target="_blank">
 		<img src="img/kibana.png" alt="Snow" width="400" height="100">
 	</a>
 </div>
@@ -126,7 +126,7 @@ if (isset($_GET['logout'])) {
 
 <div class="container">
 <div class="box">
-	<a href="https://artifactory.infra.zooto.io/" target="_blank">
+	<a href="https://artifactory.infra.steghub.com/" target="_blank">
 		<img src="img/jfrog.png" alt="snow" width="400" height="100">
 	</a>
 
