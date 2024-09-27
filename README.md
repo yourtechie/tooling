@@ -1,10 +1,30 @@
-[![nginx 1.17.2](https://img.shields.io/badge/nginx-1.17.2-brightgreen.svg?&logo=nginx&logoColor=white&style=for-the-badge)](https://nginx.org/en/CHANGES) [![php 7.3.8](https://img.shields.io/badge/php--fpm-7.3.8-blue.svg?&logo=php&logoColor=white&style=for-the-badge)](https://secure.php.net/releases/7_3_8.php)
+# Tooling Website
 
+[![nginx 1.17.2](https://img.shields.io/badge/nginx-1.17.2-brightgreen.svg?&logo=nginx&logoColor=white&style=for-the-badge)](https://nginx.org/en/CHANGES) [![php 8.3](https://img.shields.io/badge/php--fpm-8.3-blue.svg?&logo=php&logoColor=white&style=for-the-badge)](https://www.php.net/releases/8_3_0.php)
 
 ## Introduction
-This is a Dockerfile to build a debian based container image running nginx and php-fpm 7.3.x / 7.2.x / 7.1.x / 7.0.x & Composer.
+
+This repository hosts the code for the StegTechHub tooling website. The website provides a centralized platform for accessing various development tools and resources.
+
+## Technologies Used
+
+The project leverages the following technologies:
+
+- **Backend:**
+  - PHP 8.3
+  - MySQL
+- **Web Server:**
+  - Nginx 1.17.2
+- **Frontend:**
+  - HTML
+  - CSS
+  - Tailwind CSS (Utility-first CSS framework)
+- **Other:**
+  - Docker (For containerization)
+  - Composer (For PHP dependency management)
 
 ### Versioning
-| Docker Tag | GitHub Release | Nginx Version | PHP Version | Debian Version |
+
+| Docker Tag | GitHub Release | Nginx Version | PHP Version | Ubuntu Version |
 |-----|-------|-----|--------|--------|
-| latest | master Branch |1.17.2 | 7.3.8 | buster |
+| latest | master Branch |1.17.2 | 8.3 | Latest |

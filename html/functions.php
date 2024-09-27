@@ -2,7 +2,7 @@
 session_start();
 
 // connect to database
-$db = mysqli_connect('mysql.tooling.svc.cluster.local', 'admin', 'admin', 'tooling');
+$db = mysqli_connect('127.0.0.1', 'admin', 'admin', 'tooling');
 
 // Check connection
 // if (mysqli_connect_errno()) {
@@ -55,14 +55,14 @@ function register(){
 
 		if (isset($_POST['user_type'])) {
 			$user_type = e($_POST['user_type']);
-			$query = "INSERT INTO users (username, email, user_type, password) 
-					  VALUES('$username', '$email', '$user_type', '$password')";
+			$query = "INSERT INTO users (username, email, user_type, password, status) 
+					  VALUES('$username', '$email', '$user_type', '$password', '1')";
 			mysqli_query($db, $query);
 			$_SESSION['success']  = "New user successfully created!!";
 			header('location: admin_tooling.php');
 		}else{
-			$query = "INSERT INTO users (username, email, user_type, password) 
-					  VALUES('$username', '$email', 'user', '$password')";
+			$query = "INSERT INTO users (username, email, user_type, password, status) 
+					  VALUES('$username', '$email', 'user', '$password', '0')";
 			mysqli_query($db, $query);
 
 			// get id of the created user
