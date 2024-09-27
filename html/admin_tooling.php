@@ -2,140 +2,82 @@
 include('functions.php');
 
 if (!isAdmin()) {
-	$_SESSION['msg'] = "You must log in first";
-	header('location: login.php');
+    $_SESSION['msg'] = "You must log in first";
+    header('location: login.php');
 }
 
 if (isset($_GET['logout'])) {
-	session_destroy();
-	unset($_SESSION['user']);
-	header("location: login.php");
+    session_destroy();
+    unset($_SESSION['user']);
+    header("location: login.php");
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Home</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="stylesheet" type="text/css" href="tooling_stylesheets.css">
-	<style>
-	.header {
-		background: #003366;
-	}
-	button[name=register_btn] {
-		background: #003366;
-	}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Home Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-	<div class="header">
-		<h2>Admin - Home Page</h2>
-	</div>
-	<div class="content">
-		<!-- notification message -->
-		<?php if (isset($_SESSION['success'])) : ?>
-			<div class="error success" >
-				<h3>
-					<?php 
-						echo $_SESSION['success']; 
-						unset($_SESSION['success']);
-					?>
-				</h3>
-			</div>
-		<?php endif ?>
+<body class="bg-gray-100 min-h-screen flex flex-col justify-between">
+    <header class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="">
+                <h1 class="text-2xl font-bold">Admin - Home Page</h1>
+            </a>
+            <nav>
+                <a href="admin_tooling.php?logout='1'" class="text-white hover:text-gray-200 mr-4">Logout</a>
+                <a href="create_user.php" class="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-100">+ Add User</a>
+            </nav>
+        </div>
+    </header>
 
-		<!-- logged in user information -->
-		<div class="profile_info">
-		<!--	<img src="../images/admin_profile.png"  > -->
+    <main class="container mx-auto mt-8">
+        <?php if (isset($_SESSION['success'])) : ?>
+            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
+                <p><?php 
+                    echo $_SESSION['success']; 
+                    unset($_SESSION['success']);
+                ?></p>
+            </div>
+        <?php endif ?>
 
-			<div>
-				<?php  if (isset($_SESSION['user'])) : ?>
-					<strong><?php echo $_SESSION['user']['username']; ?></strong>
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="">
+                <strong class="text-gray-700">Welcome, <?php echo $_SESSION['user']['username']; ?></strong>
+                <p class="text-sm text-gray-600">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</p>
+            </div>
+        </div>
 
-					<small>
-						<i  style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i> 
-						<br>
-						<a href="admin_tooling.php?logout='1'" style="color: red;">logout</a>
-                       &nbsp; <a href="create_user.php" target="_blank"> + add user</a>
-					</small>
+        <h2 class="text-2xl font-bold mb-2">StegTechHub TOOLING WEBSITE</h2>
+        <p class="text-xl mb-8">StegHub.com</p>
 
-				<?php endif ?>
-			</div>
-		</div>
-	</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <?php
+            $tools = [
+                ['name' => 'Jenkins', 'url' => 'https://jenkins.infra.steghub.com/', 'image' => "img/jenkins.png"],
+                ['name' => 'Kubernetes', 'url' => 'https://k8s-metrics.infra.steghub.com/', 'image' => "img/kubernetes.png"],
+                ['name' => 'Grafana', 'url' => 'https://grafana.infra.steghub.com/', 'image' => "img/grafana.png"],
+                ['name' => 'Rancher', 'url' => 'https://rancher.infra.steghub.com/', 'image' => "img/rancher.png" ],
+                ['name' => 'Prometheus', 'url' => 'https://prometheus.infra.steghub.com/', 'image' => "img/prometheus.png"],
+                ['name' => 'Kibana', 'url' => 'https://kibana.infra.steghub.com/', 'image' => "img/kibana.png"],
+                ['name' => 'Artifactory', 'url' => 'https://artifactory.infra.steghub.com/', 'image' => "img/jfrog.png"]
+            ];
 
+            foreach ($tools as $tool) :
+            ?>
+            <a href="<?php echo $tool['url']; ?>" target="_blank" class="block bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition duration-300">
+                <div class="p-6 h-48 flex items-center justify-center transform hover:scale-110 transition duration-300">
+                    <img src=<?php echo $tool['image']; ?> alt=<?php echo $tool['name']; ?> class="w-full h-auto mx-auto">
+                </div>
+            </a>
+            <?php endforeach; ?>
+        </div>
+    </main>
 
-	<div class="Logo">
-
-<a href="">
-	<img src="img/logo-steghub.png" alt="" width="220" height="150">
-	</a>
-</div>
-
-
-<h1> StegTechHub TOOLING WEBSITE </h1>
-<h2 id="test">StegHub.com</h2>
-
-
-
-<div class="container">
-<div class="box">
-	<a href="https://jenkins.infra.steghub.com/" target="_blank">
-		<img src="img/jenkins.png" alt="Snow" width="400" height="150">
-	</a>
-</div>
-
-<div class="box">
-	<a href="https://grafana.infra.steghub.com/" target="_blank">
-		<img src="img/grafana.png" alt="Snow2" width="400" height="150">
-	</a>
-
-
-</div>
-
-<div class="box">
-	<a href="https://rancher.infra.steghub.com/" target="_blank">
-		<img src="img/rancher.png" alt="Snow" width="400" height="150">
-	</a>
-</div>
-
-
-</div>
-<div class="container">
-<div class="box">
-	<a href="https://prometheus.infra.steghub.com/" target="_blank">
-		<img src="img/prometheus.png" alt="Snow" width="400" height="150">
-	</a>
-</div>
-
-<div class="box">
-	<a href="https://k8s-metrics.infra.steghub.com/" target="_blank">
-		<img src="img/kubernetes.png" alt="Snow" width="400" height="120">
-	</a>
-
-</div>
-
-<div class="box">
-	<a href="https://kibana.infra.steghub.com/" target="_blank">
-		<img src="img/kibana.png" alt="Snow" width="400" height="100">
-	</a>
-</div>
-
-
-</div>
-
-<div class="container">
-<div class="box">
-	<a href="https://artifactory.infra.steghub.com/" target="_blank">
-		<img src="img/jfrog.png" alt="snow" width="400" height="100">
-	</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
+    <footer class="bg-gray-800 text-white text-center p-4 mt-20">
+        <p>&copy; 2024 StegTechHub. All rights reserved.</p>
+    </footer>
 </body>
 </html>

@@ -30,7 +30,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `user_type` varchar(255) NOT NULL,
-  `status` varchar(10) NOT NULL
+  `status` varchar(10) NOT NULL DEFAULT '0'
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 --
 -- Dumping data for table `users`
